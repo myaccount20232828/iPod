@@ -1,0 +1,17 @@
+name: Build App
+on:
+  push:
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+     - uses: actions/checkout@v3
+     - name: Git Push
+       run: |
+            git clone https://github.com/zzanehip/The-OldOS-Project
+            cp The-OldOS-Project/OldOS/OldOS/Assets.xcassets Resources
+            git config user.name github-actions
+            git config user.email github-actions@github.com
+            git add Resources
+            git commit -m "Built App"
+            git push
